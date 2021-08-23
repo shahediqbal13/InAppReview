@@ -11,7 +11,6 @@ import androidx.collection.ArraySet;
 import com.google.android.play.core.review.ReviewInfo;
 import com.google.android.play.core.review.ReviewManager;
 import com.google.android.play.core.review.ReviewManagerFactory;
-import com.google.android.play.core.review.model.ReviewErrorCode;
 import com.google.android.play.core.review.testing.FakeReviewManager;
 import com.google.android.play.core.tasks.Task;
 
@@ -51,10 +50,13 @@ public class GodotAndroidInAppReview extends GodotPlugin {
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.LOLLIPOP)
     @UsedByGodot
     public boolean isInAppReviewSupportedOs() {
-        return android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP;
+        int version = android.os.Build.VERSION.SDK_INT;
+        Log.d(TAG, PLUGIN_NAME + ": android sdk version: " + version);
+        return version >= android.os.Build.VERSION_CODES.LOLLIPOP;
     }
 
-    public void ShowInAppReview(boolean isFake) {
+    @UsedByGodot
+    public void showInAppReview(boolean isFake) {
         ReviewManager manager = isFake ? new FakeReviewManager(activity) : ReviewManagerFactory.create(activity);
 
         Task<ReviewInfo> request = manager.requestReviewFlow();

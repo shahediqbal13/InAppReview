@@ -2,4 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shahediqbal.inappreview">
 
+    <application>
+        <meta-data
+            android:name="org.godotengine.plugin.v1.GodotAndroidInAppReview"
+            android:value="com.shahediqbal.inappreview.GodotAndroidInAppReview" />
+    </application>
+
 </manifest>
