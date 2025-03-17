@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    compileSdk 30
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.shahediqbal.inappreview"
         minSdk 18
-        targetSdk 30
+        targetSdk 36
         versionCode 1
         versionName "1.0"
 
@@ -25,6 +25,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'com.shahediqbal.inappreview'
 }
 
 dependencies {

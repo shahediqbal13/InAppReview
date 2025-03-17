@@ -3,15 +3,13 @@ plugins {
 }
 
 android {
-    compileSdk 30
+    compileSdk 34
 
     def versionNumber = "1.0.0"
 
     defaultConfig {
-        minSdk 18
-        targetSdk 30
-        versionCode 1
-        versionName "$versionNumber"
+        minSdk 23
+        targetSdk 36
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -29,7 +27,8 @@ android {
     }
 
     def libName = "GodotAndroidInAppReview"
-    libraryVariants.all { variant ->
+    namespace 'com.shahediqbal.inappreview'
+    libraryVariants.configureEach { variant ->
         variant.outputs.all { output ->
             output.outputFileName = "$libName.${versionNumber}.${variant.name}.aar"
         }
@@ -37,13 +36,13 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 
-    implementation 'com.google.android.play:core:1.10.0'
+    implementation 'com.google.android.play:review:2.0.2'
 
-    compileOnly files('libs/godot-lib.3.3.3.stable.release.aar')
+    compileOnly files('libs/godot-lib.release.aar')
 }
